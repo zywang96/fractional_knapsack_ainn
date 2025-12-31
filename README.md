@@ -1,5 +1,5 @@
 
-# Fractional Knapsack AINN — End-to-End Inference + Monitoring
+# Fractional Knapsack AINN
 
 This repository runs a full **3-stage AINN pipeline** for a 5-item fractional knapsack instance.  
 You provide **weights** and **profits**, and the script produces:
