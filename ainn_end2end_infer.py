@@ -191,6 +191,29 @@ class Stage3Encoder(nn.Module):
 # -----------------------------
 #  Stage1 curve monitor (per-item absolute difference)
 # -----------------------------
+
+
+import numpy as np
+
+def comparative_consistency_pairwise(
+    pred_ratio,
+    curve_ratio
+):
+    pred = np.asarray(pred_ratio, dtype=np.float64)
+    curve = np.asarray(curve_ratio, dtype=np.float64)
+    n = pred.shape[0]
+    
+    for i in range(n):
+        for j in range(i + 1, n):
+            cd = curve[i] - curve[j]
+            pd = pred[i] - pred[j]
+            if cd * pd < 0:   # opposite signs -> comparative inconsistency
+                return True
+                
+    return False
+
+
+
 @dataclass
 class Stage1Curve:
     a: float
@@ -221,7 +244,7 @@ class Stage1Curve:
             flags = np.zeros_like(abs_diff, dtype=bool)
         else:
             flags = abs_diff > float(self.threshold)
-        global_flag = not np.array_equal(np.argsort(f_pred), np.argsort(pred_ratio))
+        global_flag = comparative_consistency_pairwise(f_pred, pred_ratio)
         return abs_diff, flags, global_flag
 
 
