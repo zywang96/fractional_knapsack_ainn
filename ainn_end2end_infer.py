@@ -699,7 +699,7 @@ def main():
     else:
         print("  curve_monitor: (disabled; stage1_curve_json missing)")
 
-    print("\n[Stage 2] Sorting Block")
+    print("\n[Stage 2] Ordering Block")
     print(f"  sort_indices: {out.sort_indices.tolist()}")
     if out.stage2_ok:
         print(f"  anomaly_monitor: \033[92m no anomaly detected \033[0m")
