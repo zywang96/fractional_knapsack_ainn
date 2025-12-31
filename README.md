@@ -43,7 +43,7 @@ The script can also compute and print ground truth reference outputs:
 
 ### Basic single-instance run
 ```bash
-python ainn_end2end_infer_v5.py \
+python ainn_end2end_infer.py \
   --weights 2,5,4,7,1 \
   --profits 10,8,7,15,3
 ````
@@ -51,7 +51,7 @@ python ainn_end2end_infer_v5.py \
 ### Print ground-truth reference outputs
 
 ```bash
-python ainn_end2end_infer_v5.py \
+python ainn_end2end_infer.py \
   --weights 2,5,4,7,1 \
   --profits 10,8,7,15,3 \
   --print_gt
@@ -62,7 +62,7 @@ python ainn_end2end_infer_v5.py \
 If you want to try your own model, you can use the `--config` flag to point the script to the appropriate checkpoints and settings.
 
 ```bash
-python ainn_end2end_infer_v5.py \
+python ainn_end2end_infer.py \
   --weights 2,5,4,7,1 \
   --profits 10,8,7,15,3 \
   --config ainn_less_iter
