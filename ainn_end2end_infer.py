@@ -523,7 +523,7 @@ def print_failure_banner(failures):
         print("\n\033[92m" + "NO FAILURES DETECTED".center(70) + "\033[0m\n")
         return
 
-    msg = f"ETECTED POTENTIAL FAILURE(S): {', '.join(failures).upper()}"
+    msg = f"DETECTED POTENTIAL FAILURE(S): {', '.join(failures).upper()}"
     line = "!" * max(70, len(msg) + 10)
     print("\n\033[91m" + line + "\033[0m")
     print("\033[91m" + msg.center(len(line)) + "\033[0m")
