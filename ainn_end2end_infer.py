@@ -683,14 +683,14 @@ def main():
         print("  curve_monitor: (disabled; stage1_curve_json missing)")
 
     print("\n[Stage 2] Sorting Block")
-    print(f"  sort_indices (model ret_ind): {out.sort_indices.tolist()}")
+    print(f"  sort_indices: {out.sort_indices.tolist()}")
     if out.stage2_ok:
         print(f"  anomaly_monitor: \033[92m no anomaly detected \033[0m")
     else:
         print(f"  anomaly_monitor: \033[91m anomaly detected \033[0m")
 
     print("\n[Stage 3] Selection Block")
-    print(f"  cumsum_order (sorted): {np.array2string(out.cumsum_order, precision=4)}")
+    print(f"  cumsum_order: {np.array2string(out.cumsum_order, precision=4)}")
     print(f"  k_idx: {int(np.argmax(out.k_mask))}  k_mask: {out.k_mask.astype(int).tolist()}")
     if out.stage3_ok:
         print(f"  anomaly_monitor: \033[92m no anomaly detected \033[0m")
