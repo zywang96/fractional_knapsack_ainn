@@ -12,7 +12,7 @@ You provide **weights** and **profits**, and the script produces:
 
 ## What the script does (high level)
 
-### Stage 1 — Scoring / Ratio Prediction
+### Stage 1 — Scoring
 - Takes `(weights, profits)` as input.
 - Predicts a 5-element score vector (ratio-like) used for sorting.
 
@@ -25,11 +25,11 @@ You provide **weights** and **profits**, and the script produces:
 
 ### Stage 2 — Sorting
 - Produces the permutation (sorted indices) of the input ratio vector.
-- Runs **Encoder2** (monitor) to decide whether Stage2 looks abnormal.
+- Runs **Encoder** (monitor) to decide whether this Stage looks abnormal.
 
 ### Stage 3 — Selection
 - Produces the final 5-element fraction vector and total profit.
-- Runs **Encoder3** (monitor) to decide whether Stage3 looks abnormal.
+- Runs **Encoder** (monitor) to decide whether this Stage looks abnormal.
 
 ### Optional Ground Truth
 The script can also compute and print ground truth reference outputs:
