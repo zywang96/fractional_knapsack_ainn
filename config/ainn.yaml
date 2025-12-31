@@ -1,0 +1,29 @@
+seed: 12345
+
+data:
+  num_samples: 1000
+
+stage1:
+  input_size: 10
+  hidden_size: 64
+  output_size: 5
+  w: 0.5
+  c1: 1.8
+  c2: 1.8
+  num_particles: 100
+  num_iterations: 50
+
+stage2:
+  w: 0.5
+  c1: 1.8
+  c2: 1.8
+  num_particles: 50
+  num_iterations: 50
+
+stage3:
+  fstage_hidden_size: 128
+  w: 0.5
+  c1: 1.8
+  c2: 1.8
+  num_particles: 100
+  num_iterations: 50
