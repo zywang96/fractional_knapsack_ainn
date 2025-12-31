@@ -81,3 +81,7 @@ The script prints:
 - A highlighted **failure summary** (which stage(s) were flagged)
 - Ground truth of given input
 
+
+## Quick Start -- Colab
+
+You can also try it on Colab by starting with this Jupyter [notebook](https://colab.research.google.com/drive/1eUlIePDL5l40NZiD55-kfDvqkGz--4yY?usp=sharing)
