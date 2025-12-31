@@ -1,7 +1,7 @@
 
 # Fractional Knapsack AINN — End-to-End Inference + Monitoring
 
-This script (`ainn_end2end_infer.py`) runs a full **3-stage AINN pipeline** for a 5-item fractional knapsack instance.  
+This repository runs a full **3-stage AINN pipeline** for a 5-item fractional knapsack instance.  
 You provide **weights** and **profits**, and the script produces:
 
 - the **final fractional selection** (fractions for each item)
