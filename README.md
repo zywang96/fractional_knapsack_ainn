@@ -75,10 +75,10 @@ python ainn_end2end_infer.py \
 The script prints:
 
 - Stage1 predicted scores (+ curve comparison flags if enabled)
-- Stage2 predicted sorting indices + Encoder2 pass/fail
-- Stage3 predicted selection + Encoder3 pass/fail
+- Stage2 predicted sorting indices + Encoder2 anomaly detection results
+- Stage3 predicted selection + Encoder3 anomaly detection results
 - Final fractions + total profit
-- A highlighted **failure summary** (which stage(s) were flagged)
+- A highlighted **anomaly summary** (which stage(s) were flagged)
 - Ground truth of given input
 
 
