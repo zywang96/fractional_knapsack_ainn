@@ -520,10 +520,10 @@ def run_pipeline(
 
 def print_failure_banner(failures):
     if not failures:
-        print("\n\033[92m" + "NO FAILURES DETECTED".center(70) + "\033[0m\n")
+        print("\n\033[92m" + "NO ANOMALY DETECTED".center(70) + "\033[0m\n")
         return
 
-    msg = f"DETECTED POTENTIAL FAILURE(S): {', '.join(failures).upper()}"
+    msg = f"DETECTED POTENTIAL ANOMALY: {', '.join(failures).upper()}"
     line = "!" * max(70, len(msg) + 10)
     print("\n\033[91m" + line + "\033[0m")
     print("\033[91m" + msg.center(len(line)) + "\033[0m")
@@ -648,7 +648,10 @@ def main():
             gflag = out.stage1_seq_flag
             print(f"  flags(diff>{stage1_curve.threshold}): {flag_list}")
             print(f"  sequence flag: {gflag}")
-            print(f"  monitor_ok(all items pass): {out.stage1_ok}")
+            if out.stage1_ok:
+                print(f"  anomaly_monitor: \033[92m no anomaly detected \033[0m")
+            else:
+                print(f"  anomaly_monitor: \033[91m anomaly detected \033[0m")
         else:
             print("  flags: (no threshold in json)")
         if out.stage1_curve_mse is not None and stage1_curve is not None and stage1_curve.mse_threshold is not None:
@@ -658,18 +661,28 @@ def main():
 
     print("\n[Stage 2] Sorting Block")
     print(f"  sort_indices (model ret_ind): {out.sort_indices.tolist()}")
-    print(f"  monitor_ok: {out.stage2_ok}")
+    if out.stage2_ok:
+        print(f"  anomaly_monitor: \033[92m no anomaly detected \033[0m")
+    else:
+        print(f"  anomaly_monitor: \033[91m anomaly detected \033[0m")
 
     print("\n[Stage 3] Selection Block")
     print(f"  cumsum_order (sorted): {np.array2string(out.cumsum_order, precision=4)}")
     print(f"  k_idx: {int(np.argmax(out.k_mask))}  k_mask: {out.k_mask.astype(int).tolist()}")
-    print(f"  monitor_ok: {out.stage3_ok}")
+    if out.stage3_ok:
+        print(f"  anomaly_monitor: \033[92m no anomaly detected \033[0m")
+    else:
+        print(f"  anomaly_monitor: \033[91m anomaly detected \033[0m")
 
     print("\n[Final Output]")
     print(f"  fractions (model, original order): {np.array2string(out.fractions, precision=4)}")
     print(f"  total_profit (model): {out.total_profit:.6f}")
     diff_sel = np.abs(out.fractions - out.fractions_gt)
     print(f"  |fractions-model - fractions-gt|: {np.array2string(diff_sel, precision=4)}  (max={float(diff_sel.max()):.6f})")
+    if float(diff_sel.max()) < 1e-5:
+        print('Correct Final Output')
+    else:
+        print('Incorrect Final Output')
 
     # locate earliest failing stage
     failures = []
