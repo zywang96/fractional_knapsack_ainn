@@ -658,13 +658,12 @@ def main():
 
     print("\n[Stage 2] Sorting Block")
     print(f"  sort_indices (model ret_ind): {out.sort_indices.tolist()}")
-    print(f"  matches GT? : {bool(np.array_equal(out.sort_indices, out.stage2_gt_indices))}")
-    print(f"  encoder2_logit: {out.stage2_logit:.4f}  prob(sigmoid): {out.stage2_prob:.4f}  ok(logit>=0): {out.stage2_ok}")
+    print(f"  monitor_ok: {out.stage2_ok}")
 
     print("\n[Stage 3] Selection Block")
-    print(f"  cumsum_order (sorted, w/cap): {np.array2string(out.cumsum_order, precision=4)}")
+    print(f"  cumsum_order (sorted): {np.array2string(out.cumsum_order, precision=4)}")
     print(f"  k_idx: {int(np.argmax(out.k_mask))}  k_mask: {out.k_mask.astype(int).tolist()}")
-    print(f"  encoder3_logit: {out.stage3_logit:.4f}  prob(sigmoid): {out.stage3_prob:.4f}  ok(logit>=0): {out.stage3_ok}")
+    print(f"  monitor_ok: {out.stage3_ok}")
 
     print("\n[Final Output]")
     print(f"  fractions (model, original order): {np.array2string(out.fractions, precision=4)}")
