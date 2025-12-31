@@ -541,15 +541,32 @@ def run_pipeline(
 
 
 
-def print_failure_banner(failures):
+def print_failure_banner(failures, width=74):
+    GREEN = "\033[92m"
+    RED = "\033[91m"
+    RESET = "\033[0m"
+
+    def _box(lines, color):
+        inner_w = max(len(s) for s in lines)
+        inner_w = min(inner_w, width - 4)  # keep bounded
+
+        top = "+" + "-" * (inner_w + 2) + "+"
+        bot = "+" + "-" * (inner_w + 2) + "+"
+
+        print()
+        print(color + top + RESET)
+        for s in lines:
+            s = s[:inner_w]
+            print(color + "| " + s.center(inner_w) + " |" + RESET)
+        print(color + bot + RESET)
+        print()
+
     if not failures:
-        print("\n\033[92m" + "NO ANOMALY DETECTED".center(70) + "\033[0m\n")
+        _box(["NO ANOMALY DETECTED"], GREEN)
         return
 
     msg = f"DETECTED POTENTIAL ANOMALY: {', '.join(failures).upper()}"
-    line = "!" * max(70, len(msg) + 10)
-    print("\n\033[91m" + line + "\033[0m")
-    print("\033[91m" + msg.center(len(line)) + "\033[0m")
+    _box([msg], RED)
 
 
 
