@@ -669,8 +669,8 @@ def main():
         if stage1_curve is not None and stage1_curve.threshold is not None:
             flag_list = [bool(x) for x in out.stage1_flags.tolist()]
             gflag = out.stage1_seq_flag
-            print(f"  Deviation flag: {flag_list}")
-            print(f"  sequence flag: {gflag}")
+            print(f"  deviation flag: {flag_list}")
+            print(f"  comparative flag: {gflag}")
             if out.stage1_ok:
                 print(f"  anomaly_monitor: \033[92m no anomaly detected \033[0m")
             else:
