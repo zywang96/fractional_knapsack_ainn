@@ -10,7 +10,7 @@ You provide **weights** and **profits**, and the script produces:
 
 ---
 
-## What the script does (high level)
+## What this repo does
 
 ### Stage 1 — Scoring
 - Takes `(weights, profits)` as input.
