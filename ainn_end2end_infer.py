@@ -700,12 +700,12 @@ def main():
     print("\n[Final Output]")
     print(f"  fractions (model, original order): {np.array2string(out.fractions, precision=4)}")
     print(f"  total_profit (model): {out.total_profit:.6f}")
-    diff_sel = np.abs(out.fractions - out.fractions_gt)
-    print(f"  |fractions-model - fractions-gt|: {np.array2string(diff_sel, precision=4)}  (max={float(diff_sel.max()):.6f})")
+    #diff_sel = np.abs(out.fractions - out.fractions_gt)
+    #print(f"  |fractions-model - fractions-gt|: {np.array2string(diff_sel, precision=4)}  (max={float(diff_sel.max()):.6f})")
     if float(diff_sel.max()) < 1e-5:
-        print('Correct Final Output')
+        print('  Correct Optimal Output')
     else:
-        print('Incorrect Final Output')
+        print('  Incorrect Optimal Output')
 
     # locate earliest failing stage
     failures = []
