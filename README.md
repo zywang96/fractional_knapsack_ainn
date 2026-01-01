@@ -23,7 +23,7 @@ You provide **weights** and **profits**, and the script produces:
 - Flags any item whose difference exceeds the threshold.
 - Flags the entire sequence if a comparative inconsistency is detected.
 
-### Stage 2 — Sorting
+### Stage 2 — Ordering
 - Produces the permutation (sorted indices) of the input ratio vector.
 - Runs **Encoder** (monitor) to decide whether this Stage looks abnormal.
 
