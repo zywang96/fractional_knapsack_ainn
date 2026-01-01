@@ -8,6 +8,8 @@ import argparse
 import json
 import math
 import os
+import warnings
+import logging
 import sys
 from dataclasses import dataclass
 from typing import List, Optional, Tuple, Dict, Any
@@ -25,10 +27,7 @@ except Exception as e:
     clrs_run_inference = None
     _IMPORT_ERR = e
 
-# --- MUST BE AT TOP, before any heavy imports ---
-import os
-import warnings
-import logging
+
 
 warnings.filterwarnings("ignore")  # or target specific categories below
 
